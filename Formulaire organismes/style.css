@@ -1,0 +1,88 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #DEDEDE;
+}
+
+.form-container {
+    display: flex;
+    overflow: hidden;
+    width: 320px; /* Largeur fixe des formulaires plus les marges entre eux */
+    transition: width 0.5s ease;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    background-color: #DEDEDE;
+}
+
+.form {
+    flex: 1; /* Le formulaire occupera tout l'espace disponible dans le conteneur */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+#association-container {
+    height: 70%;
+}
+#entreprise-container {
+    margin-left: 20px;
+    height: 70%;
+}
+
+.form h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form input,
+.form textarea,
+.form select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form select {
+    appearance: none;
+}
+
+.form input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form input[type="submit"]:hover {
+    background-color: #45a049;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.form-container:hover {
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.4);
+    width: 650px; /* Double de la largeur initiale pour accueillir les deux formulaires côte à côte */
+}
+.notification-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    display: none;
+}
