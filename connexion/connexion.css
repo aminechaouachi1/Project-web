@@ -1,0 +1,139 @@
+/* Réinitialisation des styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card-container {
+    perspective: 1000px;
+    margin-top: 100px;
+}
+
+.card {
+    width: 550px;
+    height: 750px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.face h2{
+    position: relative;
+    top: 5px;
+    margin-top: 50px;
+    font-size: 50px;
+}
+.face a{
+    text-decoration: none;
+    background-color: #D7B20B;
+    padding: 6px;
+    color: #FFFFFF;
+    border-radius: 0;
+    transition: all 0.3s;
+}
+.face a:hover{
+    text-decoration: none;
+    background-color: #D7B20B;
+    padding: 6px;
+    color: #FFFFFF;
+    border-radius: 70px;
+}
+.face input{
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 30%;
+    margin-top: 20px;
+    border-radius: 10px ;
+    border: 1.5px solid #000000;
+}
+.face button{
+    position: relative;
+    top: 35px;
+    font-size: 20px;
+}
+
+.face p{
+    position: relative;
+    top: 170px;
+    text-decoration: none;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+button {
+    background: #02567A;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Styles pour le diaporama */
+.slideshow-container {
+    position: fixed;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    width: 100%;
+    opacity: 0.1;
+}
+
+/* Styles pour la transition */
+.fade {
+    animation-name: fade;
+    animation-duration: 3s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
