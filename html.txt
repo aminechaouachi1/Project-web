@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos actions</title>
+
+    <link rel="stylesheet" href="style.css">
+    <div class="menu">
+        <a href="/Page d'accueil/accueil.html">Accueil</a>
+        <a href="#publications">Nos publications</a>
+        <a href="/Page boutique/Boutique.html">Notre Boutique</a>
+        <a href="/Page d'actions/actions.html">Nos actions</a>
+    </div>
+</head>
+
+<body>
+    <div class="imageprincipale">
+        <a href="#">
+            <img src="C:\Users\MSI\Desktop\page publication\Sources\325419967_696149255327245_880955397294937651_n.jpg" alt="facebook">
+
+        </a>
+
+    </div>
+    <div class="rectanglecover">
+        <h1>Le Blog des Idées</h1>
+    </div>
+    <div class="logo"> <img src="C:\Users\MSI\Desktop\page publication\Sources\LOGO.png" alt="Logo"> </div>
+
+    <div class="btn_admin">
+        <a href="/connexion/connexion.html">Se connecter en tant qu'admin</a>
+    </div>
+    <div id="prestations">
+        <div class="imagesprestations ">
+            <h2>Partager vos publications et rejoindre notre famille </h2>
+            <div class="center-container">
+            <header>ragistration</header>
+            <form action="#" method="post">
+                <div class="form first">
+                    <div class="detail personal">
+                        <span class="title">personal details</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>fullname</label>
+                                <input type="texte" placeholder="enter your name" required>
+                            </div>
+                            <div class="input-field ">
+                                <label>email</label>
+                                <input type="email" placeholder="enter your email" required>
+
+                            </div>
+                            <div class="input-field ">
+                                <label>number</label>
+                                <input type="number" placeholder="enter your phone number" required>
+                            
+                            </div>
+                            <button type="submit">Envoyer</button>
+
+                        </div>
+                    </div>
+                </div>
+              
+            </form> 
+          
+        </div>
+        </div>
+    </div>
+   
+    
+    <button id="scrollToTopBtn">↑</button>
+    <script src="accueil.js"></script>
+    <script src="action.js"></script>
+    <script src="connexion.js"></script>
+    <div class="sidebarannonce">
+        <a href="/connexion/connexion.html">Créer une publication </a>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+<?php
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos actions</title>
+
+    <link rel="stylesheet" href="style.css">
+    <div class="menu">
+        <a href="/page publication/accueil.php">Accueil</a>
+        <a href="#publications">Nos publications</a>
+        <a href="/Page boutique/Boutique.php">Notre Boutique</a>
+        <a href="/Page d'actions/actions.php">Nos actions</a>
+    </div>
+</head>
+
+<body>
+    <div class="imageprincipale">
+        <a href="#">
+            
+        <img src="../Sources/LOGO.png" alt="facebook">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////////////////
+        <form method="post" action="traitement.php">
+                <div class="form first">
+                    <div class="detail personal">
+                        <span class="title">personal details</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>name</label>
+                                <input type="texte" placeholder="enter your name" required>
+                            </div>
+                            <div class="input-field ">
+                                <label>email</label>
+                                <input type="email" placeholder="enter your email" required>
+
+                            </div>
+                            <div class="input-field ">
+                                <label>number</label>
+                                <input type="number" placeholder="enter your phone number" required>
+                            
+                            </div>
+                        <input type="submit" value="inscrire" name="ok">
+                    </div>
+                </div>
+              
+            </form> 
+          
+        </div>
+
+
+        </a>
+
+    </div>
+    <div class="rectanglecover">
+        <h1>Le Blogge des Idées</h1>
+    </div>
+    <div class="logo"> <img src="C:\Users\MSI\Desktop\page publication\Sources\LOGO.png" alt="Logo"> </div>
+
+    <div class="btn_admin">
+        <a href="/connexion/connexion.php">Se connecter en tant qu'admin</a>
+    </div>
+    <div id="prestations">
+        <div class="imagesprestations ">
+            <h2>Partager vos publications et rejoindre notre famille </h2>
+            <div class="center-container">
+            <header>ragistration</header>
+            <form action="#" method="post">
+                <div class="form first">
+                    <div class="detail personal">
+                        <span class="title">personal details</span>
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>fullname</label>
+                                <input type="texte" placeholder="enter your name" required>
+                            </div>
+                            <div class="input-field ">
+                                <label>email</label>
+                                <input type="email" placeholder="enter your email" required>
+
+                            </div>
+                            <div class="input-field ">
+                                <label>number</label>
+                                <input type="number" placeholder="enter your phone number" required>
+                            
+                            </div>
+                            <div class="input-field ">
+                                <label>number</label>
+                                <input type="number" placeholder="enter your phone number" required>
+                            
+                            <button type="submit">Envoyer</button>
+
+                        </div>
+                    </div>
+                </div>
+              
+            </form> 
+          
+        </div>
+        </div>
+    </div>
+   
+    
+    <button id="scrollToTopBtn">↑</button>
+    <script src="accueil.js"></script>
+    <script src="action.js"></script>
+    <script src="connexion.js"></script>
+    <div class="sidebarannonce">
+        <a href="/connexion/connexion.php">Créer une publication </a>
+    </div>
+</body>
+
+</html>
