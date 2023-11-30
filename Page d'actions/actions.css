@@ -1,0 +1,156 @@
+body {
+    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #DEDEDE;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+.center-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        height: 100vh; /* Hauteur de la vue du navigateur */
+        margin-top: 500px;
+        margin-bottom: 200px;
+    }
+
+
+.texte{
+    display: flex;
+    position: relative;
+    margin-left: 15%;
+    margin-top: 3.5%;
+    margin-right: 2%;
+    z-index: -1000;
+}
+.rectangle {
+    margin-bottom: 60px;
+    display: flex;
+    background-color: #00000033;
+    color: #000000;
+    width: 100%; /* La largeur occupe toute la largeur du conteneur */
+    max-width: 1500px; /* Largeur maximale du rectangle */
+    border-radius: 60px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+.rectanglecover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-color: #DEDEDE;
+    width: 2000px;
+    height: 250px;
+    padding: 10px 0;
+    z-index: 2;
+}
+
+.rectanglecover h1{
+    left: 32.5%;
+    top: 15%;
+    display: flex;
+    position: relative;
+    color: #BD0055;
+    text-decoration: none;
+    padding: 50px 30px;
+    border-radius: 20px;
+    font-size: 70px;
+}
+.logo1 {
+    position: relative;
+    left: 2%;
+    margin-top: 2.5%;
+    width: 100px;
+    z-index: 1;
+}
+
+.logo1 img {
+    width: 350%;
+    height: auto;
+}
+
+.rectangle_don {
+    position: relative;
+    top: 0;
+    right: 2%;
+    align-items: center;
+    background-color: #D7B20B;
+    text-decoration: none;
+    width: 100px;
+    height: 280px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.rectangle_don a {
+    display: flex;
+    position: relative;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 50px 30px;
+    border-radius: 20px;
+    font-size: 30px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.rectangle_don a:hover {
+    display: flex;
+    position: relative;
+    background-color: #BD0055;
+    color: #000000;
+    text-decoration: none;
+    padding: 60px 30px;
+    font-size: 30px;
+}
+
+.sidebarannonce {
+    position: fixed;
+    top: 150px;
+    right: 0px;
+    background-color: #02567A;
+    width: 60px;
+    height: auto;
+    padding: 10px 0;
+    border: 1px solid black;
+    border-top-left-radius: 30px; /* Adjust the radius as needed for curved corners */
+    border-bottom-left-radius: 30px; /* Adjust the radius as needed for curved corners */
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.631);
+    z-index: 1000;
+}
+
+.sidebarannonce a{
+    writing-mode: vertical-lr; /* Écriture verticale de bas en haut (de gauche à droite) */
+    display: flex;
+    position: relative;
+    color: #FFFFFF;
+    background-color: #02567A;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 10px 20px ; /* Ajustez la taille des boutons selon vos préférences */
+    overflow: hidden;
+    border-bottom-left-radius: 160px;
+    border-bottom-right-radius: 160px;
+    transition: all 0.3s; /* Ajoutez une transition pour une animation fluide */
+}
+
+.sidebarannonce a:hover{
+    writing-mode: vertical-lr; /* Écriture verticale de bas en haut (de gauche à droite) */
+    display: flex;
+    position: relative;
+    color: #D7B20B;
+    background-color: #02567A;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px 20px ; /* Ajustez la taille des boutons selon vos préférences */
+    overflow: hidden;
+    border-bottom-left-radius: 160px;
+    border-bottom-right-radius: 160px;
+    transition: all 0.2s; /* Ajoutez une transition pour une animation fluide */
+}
