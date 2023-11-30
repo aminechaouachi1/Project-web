@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,37 +9,37 @@
     <title>Accueil</title>
     <link rel="stylesheet" href="accueil.css">
     <div class="menu">
-        <a href="/Page d'accueil/accueil.html">Accueil</a>
+        <a href="../Page d'accueil/accueil.php">Accueil</a>
         <a href="#a_propos">A propos</a>
-        <a href="/Page boutique/Boutique.html">Notre Boutique</a>        
-        <a href="/Page d'actions/actions.html">Nos actions</a>
+        <a href="../Page boutique/Boutique.php">Notre Boutique</a>        
+        <a href="../Page d'actions/actions.php">Nos actions</a>
     </div>
 </head>
 <body>
-<div class="logo"> <img src="/Sources/LOGO.png" alt="Logo"> </div>
+<div class="logo"> <img src="../Sources/LOGO.png" alt="Logo"> </div>
 
-<div class="btn_admin">
-    <a href="/connexion/connexion.html">Se connecter en tant qu'admin</a>
-</div>
+<!-- <div class="btn_admin">
+        <a href="../connexion/connexion.html">Se connecter en tant qu'admin</a>
+    </div> -->
 <div class="sidebar">
     <a href="#">
-    <img src="/Sources/icons/facebook1.png" alt="facebook">
+    <img src="../Sources/icons/facebook1.png" alt="facebook">
 </a>
 <a href="#">
-    <img src="/Sources/icons/instagramm.png" alt="Instagram">
+    <img src="../Sources/icons/instagramm.png" alt="Instagram">
 </a>
     <a href="#">
-    <img src="/Sources/icons/linkedin.png" alt="linkedin">
+    <img src="../Sources/icons/linkedin.png" alt="linkedin">
 </a>
     <a href="#">
-    <img src="/Sources/icons/whatsapp.png" alt="whatsapp">
+    <img src="../Sources/icons/whatsapp.png" alt="whatsapp">
 </a>
 </div>
     <div class="image-in-rectangle">
-        <img src="/Sources/omar.jpg" alt="Your Photo">
+        <img src="../Sources/omar.jpg" alt="Your Photo">
     </div>
     <div class="image-in-circle">
-        <img src="/Sources/325419967_696149255327245_880955397294937651_n.jpg" >
+        <img src="../Sources/325419967_696149255327245_880955397294937651_n.jpg" >
     </div>
     <div class="paragraphe1">
         <h5>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, <br>

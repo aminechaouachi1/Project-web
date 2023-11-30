@@ -1,46 +1,49 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nos actions</title>
-    <link rel="stylesheet" href="/Page d'accueil/accueil.css">
-    <link rel="stylesheet" href="/Page d'actions/actions.css">
-    <link rel="stylesheet" href="/Page boutique/Boutique.css">
+    <link rel="stylesheet" href="../Page d'accueil/accueil.css">
+    <link rel="stylesheet" href="../Page d'actions/actions.css">
+    <link rel="stylesheet" href="../Page boutique/Boutique.css">
 </head>
 <body>
     <div class="menu">
-        <a href="/Page d'accueil/accueil.html">Accueil</a>
-        <a href="/Page d'accueil/accueil.html#a_propos">A propos</a>
-        <a href="/Page boutique/Boutique.html">Notre Boutique</a>
-        <a href="/Page d'actions/actions.html">Nos actions</a>
+        <a href="../Page d'accueil/accueil.php">Accueil</a>
+        <a href="../Page d'accueil/accueil.php#a_propos">A propos</a>
+        <a href="../Page boutique/Boutique.php">Notre Boutique</a>
+        <a href="../Page d'actions/actions.php">Nos actions</a>
     </div>
 
     <div class="sidebar">
         <a href="#">
-            <img src="/Sources/icons/facebook1.png" alt="facebook">
+            <img src="../Sources/icons/facebook1.png" alt="facebook">
         </a>
         <a href="#">
-            <img src="/Sources/icons/instagramm.png" alt="Instagram">
+            <img src="../Sources/icons/instagramm.png" alt="Instagram">
         </a>
         <a href="#">
-            <img src="/Sources/icons/linkedin.png" alt="linkedin">
+            <img src="../Sources/icons/linkedin.png" alt="linkedin">
         </a>
         <a href="#">
-            <img src="/Sources/icons/whatsapp.png" alt="whatsapp">
+            <img src="../Sources/icons/whatsapp.png" alt="whatsapp">
         </a>
     </div>
     <div class="logo">
-        <img src="/Sources/LOGO.png" alt="Logo">
+        <img src="../Sources/LOGO.png" alt="Logo">
     </div>
 
-    <div class="btn_admin">
-        <a href="/connexion/connexion.html">Se connecter en tant qu'admin</a>
-    </div>
+    <!-- <div class="btn_admin">
+        <a href="../connexion/connexion.html">Se connecter en tant qu'admin</a>
+    </div> -->
     <div id="carousel-container">
         <div id="carousel">
             <div class="item">
-                <img src="/Sources/tshir.jpg" alt="Image 1">
+                <img src="../Sources/tshir.jpg" alt="Image 1">
                 <div>
                     <p>Prix : ***TND</p>
                     <p>Taille : M</p>
@@ -111,7 +114,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="/Sources/tshir.jpg" alt="Image 1">
+                <img src="../Sources/tshir.jpg" alt="Image 1">
                 <div>
                     <p>Prix : ***TND</p>
                     <p>Taille : M</p>

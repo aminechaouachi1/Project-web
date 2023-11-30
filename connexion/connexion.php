@@ -1,55 +1,57 @@
-    <!DOCTYPE html>
+<?php
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/signup</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="/Page d'accueil/accueil.css">
-    <link rel="stylesheet" href="/Page d'actions/actions.css">
-    <link rel="stylesheet" href="/connexion/connexion.css">
+    <link rel="stylesheet" href="../Page d'accueil/accueil.css">
+    <link rel="stylesheet" href="../Page d'actions/actions.css">
+    <link rel="stylesheet" href="../connexion/connexion.css">
     <div class="menu">
-        <a href="/Page d'accueil/accueil.html">Accueil</a>
-        <a href="/Page d'accueil/accueil.html#a_propos">A propos</a>
-        <a href="/Page boutique/Boutique.html">Notre Boutique</a>
-        <a href="/Page d'actions/actions.html">Nos actions</a>
+        <a href="../Page d'accueil/accueil.php">Accueil</a>
+        <a href="../Page d'accueil/accueil.php#a_propos">A propos</a>
+        <a href="../Page boutique/Boutique.php">Notre Boutique</a>
+        <a href="../Page d'actions/actions.php">Nos actions</a>
     </div>
     <body>
-    <div class="logo"> <img src="/Sources/LOGO.png" alt="Logo"> </div>
+    <div class="logo"> <img src="../Sources/LOGO.png" alt="Logo"> </div>
     
-    <div class="btn_admin">
-        <a href="/connexion/connexion.html">Se connecter en tant qu'admin</a>
-    </div>
+    <!-- <div class="btn_admin">
+        <a href="../connexion/connexion.html">Se connecter en tant qu'admin</a>
+    </div> -->
     <title>Carte de Connexion/Inscription</title>
 </head>
 <body>
 
     <div class="slideshow-container">
         <div class="mySlides fade">
-            <img src="/Sources/2.jpg" alt="Image 2">
+            <img src="../Sources/2.jpg" alt="Image 2">
         </div>
         <div class="mySlides fade">
-            <img src="/Sources/3.jpg" alt="Image 3">
+            <img src="../Sources/3.jpg" alt="Image 3">
         </div>
         <div class="mySlides fade">
-            <img src="/Sources/4.jpg" alt="Image 3">
+            <img src="../Sources/4.jpg" alt="Image 3">
         </div>
         <div class="mySlides fade">
-            <img src="/Sources/5.jpg" alt="Image 3">
+            <img src="../Sources/5.jpg" alt="Image 3">
         </div>
     </div>
     <div class="sidebar">
         <a href="#">
-        <img src="/Sources/icons/facebook1.png" alt="facebook">
+        <img src="../Sources/icons/facebook1.png" alt="facebook">
     </a>
     <a href="#">
-        <img src="/Sources/icons/instagramm.png" alt="Instagram">
+        <img src="../Sources/icons/instagramm.png" alt="Instagram">
     </a>
         <a href="#">
-        <img src="/Sources/icons/linkedin.png" alt="linkedin">
+        <img src="../Sources/icons/linkedin.png" alt="linkedin">
     </a>
         <a href="#">
-        <img src="/Sources/icons/whatsapp.png" alt="whatsapp">
+        <img src="../Sources/icons/whatsapp.png" alt="whatsapp">
     </a>
     </div>
     <div class="card-container">
