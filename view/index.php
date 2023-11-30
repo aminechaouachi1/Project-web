@@ -12,7 +12,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
         // Supprimer la ligne de la base de données
         $delete_id = $_POST['delete_id'];
-        $deleteStatement = $conn->prepare('DELETE FROM mac WHERE id = :id');
+        $deleteStatement = $conn->prepare('DELETE FROM mac WHERE id_mac = :id');
         $deleteStatement->bindParam(':id', $delete_id);
         $deleteStatement->execute();
     }
@@ -49,7 +49,7 @@ try {
             border: 2px solid #3498db;
             padding: 12px;
             text-align: left;
-            background-color: #f1c40f;
+            background-color: #77B5FE;
             color: #fff;
         }
 
@@ -105,22 +105,22 @@ try {
 
     <table id="dataTable">
         <tr>
-             <th> id</th>
-            <th> nom </th>
-            <th> email </th>
-            <th> numero </th>
-            <th> societe</th>
-            <th> matricule </th>
-            <th> pays </th>
-            <th> region </th>
-            <th> postcode </th>
-            <th> categories</th>
-            <th> Actions </th>
+            <th>id</th>
+            <th>nom</th>
+            <th>email</th>
+            <th>numero</th>
+            <th>societe</th>
+            <th>matricule</th>
+            <th>pays</th>
+            <th>region</th>
+            <th>postcode</th>
+            <th>categories</th>
+            <th>Actions</th>
         </tr>
 <?php
         foreach ($dolce as $ligne) {
             echo '<tr>';
-            echo '<td contenteditable="true">' . $ligne['id'] . '</td>';
+            echo '<td contenteditable="true">' . $ligne['id_mac'] . '</td>';
             echo '<td contenteditable="true">' . $ligne['nom'] . '</td>';
             echo '<td contenteditable="true">' . $ligne['email'] . '</td>';
             echo '<td contenteditable="true">' . $ligne['numero'] . '</td>';
@@ -129,43 +129,44 @@ try {
             echo '<td contenteditable="true">' . $ligne['pays'] . '</td>';
             echo '<td contenteditable="true">' . $ligne['region'] . '</td>';
             echo '<td contenteditable="true">' . $ligne['Postcode'] . '</td>';
-            echo '<td contenteditable="true">' . $ligne['categories'] . '</td>';
+            echo '<td contenteditable="true">' . $ligne['categorie_id'] . '</td>';
             echo '<td>';
             echo '<form method="post" onsubmit="return confirm(\'Êtes-vous sûr de vouloir supprimer?\');">';
-            echo '<input type="hidden" name="delete_id" value="' . $ligne['id'] . '">';
+            echo '<input type="hidden" name="delete_id" value="' . $ligne['id_mac'] . '">';
             echo '<button type="submit" class="delete-button">Supprimer</button>';
             echo '</form>';
             echo '</td>';
             echo '</tr>';
         }
-            ?>
-    <script>
-     function deleteRow(button) {
-            var row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-        }
+?>
+   <script>
+    function deleteRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
 
-        function filterTable() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("searchBar");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("dataTable");
-            tr = table.getElementsByTagName("tr");
+    function filterTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchBar");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
 
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0]; // Assuming the name is in the first column
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1]; // Assuming the name is in the second column
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
                 }
             }
         }
-    </script>
+    }
+</script>
+
 
 </body>
 </html>
