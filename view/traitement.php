@@ -1,223 +1,221 @@
-
 <?php
-include 'config.php'; // Connexion à la base de données
+$host = 'localhost';
+$dbname = 'dolce';
+$username = 'root';
+$password = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = htmlspecialchars($_POST['nom']);
-    $email = htmlspecialchars($_POST['email']);
-    $numero = htmlspecialchars($_POST['numero']);
-    $societe = isset($_POST['societe']) ? htmlspecialchars($_POST['societe']) : '';
-    $matricule = htmlspecialchars($_POST['matricule']);
-    $pays = htmlspecialchars($_POST['pays']);
-    $region = htmlspecialchars($_POST['region']);
-    $postcode = htmlspecialchars($_POST['Postcode']);
-    $categories = htmlspecialchars($_POST['categories']);
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Assurez-vous de mettre à jour la requête SQL pour inclure toutes les colonnes nécessaires
-    $stmt = $conn->prepare("INSERT INTO mac (nom, email, numero, societe, matricule, pays, region, postcode, categories) VALUES (:nom, :email, :numero, :societe, :matricule, :pays, :region, :postcode, :categories)");
-    $stmt->bindParam(':nom', $nom);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':numero', $numero);
-    $stmt->bindParam(':societe', $societe);
-    $stmt->bindParam(':matricule', $matricule);
-    $stmt->bindParam(':pays', $pays);
-    $stmt->bindParam(':region', $region);
-    $stmt->bindParam(':postcode', $postcode);
-    $stmt->bindParam(':categories', $categories);
-
-    if ($stmt->execute()) {
-        // Affichez le message avec JavaScript
-        echo '<script>alert("Votre don est confirmé. Merci pour votre confiance. Nous vous contacterons le plus tôt possible.");</script>';
-        
-        // Redirigez après un court délai
-        echo '<script>setTimeout(function(){ window.location.href = "traitement.php"; }, 3000);</script>';
-        exit();
-    } else {
-        // Gérer les erreurs d'insertion ici
-        echo "Erreur lors de l'insertion dans la base de données.";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+        // Supprimer la ligne de la base de données
+        $delete_id = $_POST['delete_id'];
+        $deleteStatement = $conn->prepare('DELETE FROM mac WHERE id_mac = :id');
+        $deleteStatement->bindParam(':id', $delete_id);
+        $deleteStatement->execute();
     }
-    
-    header('Location: traitement.php');
+
+    $pdostat = $conn->prepare('SELECT * FROM mac');
+    $executeisok = $pdostat->execute();
+    $dolce = $pdostat->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
+
 ?>
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos actions</title>
-
-    <link rel="stylesheet" href="style.css">
+    <title>Admin Dashboard</title>
     <style>
-        .btn {
-            text-align: center;
-            margin-top: 20px;
-        }
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 
-        .btn input[type="submit"] {
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            padding: 18px 50px;
-            cursor: pointer;
-            font-size: 16px;
-        }
 
-        .btn input[type="submit"]:hover {
-            background-color: #2980b9;
-        }
-    </style>
-    <div class="menu">
-        <a href="/page publication/accueil.php">Accueil</a>
-        <a href="#publications">Nos publications</a>
-        <a href="/Page boutique/Boutique.php">Notre Boutique</a>
-        <a href="/Page d'actions/actions.php">Nos actions</a>
-    </div>
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8; /* Light gray background */
+    }
+
+    header {
+        background-color: #f1c40f; /* Yellow background */
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #dashboard {
+        display: flex;
+        background-color: #001f3f; /* Dark blue background for the dashboard */
+        color: #fff; /* White text color */
+    }
+
+    nav {
+        width: 250px;
+        background-color: #2980b9; /* Dark blue background for the navigation sidebar */
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #content {
+        flex: 1;
+        padding: 20px;
+        background-color: #ecf0f1; /* Light blue background for the content area */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th  {
+        border: 1px solid #3498db;
+        padding: 12px;
+        text-align: left;
+        background-color: #3498db; /* Light blue background for table headers and cells */
+        color: #fff; /* White text color */
+    }
+    td {
+        border: 1px solid #3498db;
+        padding: 12px;
+        text-align: left;
+       /* Light blue background for table headers and cells */
+        color: #000000; /* White text color */
+    }
+
+    .delete-button {
+        background-color: #f1c40f; /* Yellow background for delete button */
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    .delete-button:hover {
+        background-color: #e74c3c; /* Darker red background on hover */
+    }
+
+    .edit-field {
+        border: none;
+        padding: 8px 12px;
+        width: 80%;
+        box-sizing: border-box;
+    }
+
+    #searchBar {
+        margin-bottom: 20px;
+        padding: 10px;
+        width: 80%;
+        font-size: 16px;
+        border: 1px solid #3498db;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    /* Additional Styles for Dashboard Links */
+    #dashboard a {
+        color: #fff; /* White text color for links */
+        text-decoration: underline; /* Underline for links */
+        font-size: 18px; /* Larger font size for links */
+    }
+</style>
+
+
 </head>
 
 <body>
-    <div class="imageprincipale">
-        <a href="#">
-            <img src="Sources\325419967_696149255327245_880955397294937651_n.jpg" alt="facebook">
-        </a>
-    </div>
-    <div class="rectanglecover">
-        <h1>Le Blog Des Dons</h1>
-    </div>
-    <div class="logo"> <img src="Sources\LOGO.png" alt="Logo"> </div>
-    <div class="btn_admin">
-        <a href="/connexion/connexion.php">Se connecter en tant qu'admin</a>
-    </div>
-    <div id="prestations">
-        <div class="imagesprestations ">
-            <h2>Partager vos publications et rejoindre notre famille </h2>
-            <div class="center-container">
-                <header>Detail du Donnateur</header>
-                <form id="registrationForm" method="POST" action="">
-                    <div class="form first">
-                        <div class="detail personal">
-                            <span class="title"></span>
-                            <div class="fields">
-                                <div class="input-field">
-                                    <label for="nom">Nom complet</label>
-                                    <input type="text" name="nom" placeholder="enter your name" id="nom">
-                                    <span id="nomError" style="color: red;"></span>
-                                </div>
-                                <div class="input-field">
-                                    <label for="email">Adresse email</label>
-                                    <input type="email" name="email" placeholder="enter your email" id="email">
-                                    <span id="emailError" style="color: red;"></span>
-                                </div>
-                                <div class="input-field">
-                                    <label for="numero">Numero</label>
-                                    <input type="number" name="numero" placeholder="enter your phone number" id="numero">
-                                    <span id="numeroError" style="color: red;"></span>
-                                </div>
-                                <div class="input-field">
-                                    <label for="societe">Nom de la société</label>
-                                    <input type="text" name="societe" placeholder="enter your company name" id="societe">
-                                </div>
-                                <div class="input-field">
-                                    <label for="matricule">Matricule de la société</label>
-                                    <input type="text" name="matricule" placeholder="enter your company registration number" id="matricule">
-                                </div>
-                                <div class="input-field">
-                                    <label for="pays">Pays</label>
-                                    <input type="text" name="pays" placeholder="enter your country" id="pays">
-                                </div>
-                                <div class="input-field">
-                                    <label for="region">Région</label>
-                                    <input type="text" name="region" placeholder="enter your region" id="region">
-                                </div>
-                                <div class="input-field">
-                                    <label for="Postcode">Postcode</label>
-                                    <input type="text" name="Postcode" placeholder="enter your Postcode" id="Postcode">
-                                </div>
-                                <div class="input-field">
-                                    <label for="categories">Categories</label>
-                                    <input type="text" name="categories" placeholder="argent/nourriture/habits/fourniture" id="categories">
-                                    <span id="categoriesError" style="color: red;"></span>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn">
-                        <input type="submit" value="valider" name="ok" id="submitButton">
-                    </div>
-                </form>
-            </div>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <div id="dashboard">
+        <nav>
+            <!-- Navigation links for different sections of the dashboard -->
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="categories.php">Gestion des Categories</a></li> <!-- Updated link for Categories -->
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <!-- Barre de recherche -->
+            <input type="text" id="searchBar" placeholder="Search by name" oninput="filterTable()">
+
+            <table id="dataTable">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Numero</th>
+                    <th>Societe</th>
+                    <th>Matricule</th>
+                    <th>Pays</th>
+                    <th>Region</th>
+                    <th>Postcode</th>
+                    <th>Categories</th>
+                    <th>Actions</th>
+                </tr>
+                <?php
+                foreach ($dolce as $ligne) {
+                    echo '<tr>';
+                    echo '<td contenteditable="true">' . $ligne['id_mac'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['nom'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['email'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['numero'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['societe'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['matricule'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['pays'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['region'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['Postcode'] . '</td>';
+                    echo '<td contenteditable="true">' . $ligne['categorie_id'] . '</td>';
+                    echo '<td>';
+                    echo '<form method="post" onsubmit="return confirm(\'Are you sure you want to delete?\');">';
+                    echo '<input type="hidden" name="delete_id" value="' . $ligne['id_mac'] . '">';
+                    echo '<button type="submit" class="delete-button">Delete</button>';
+                    echo '</form>';
+                    echo '</td>';
+                    echo '</tr>';
+                }
+                ?>
+            </table>
         </div>
     </div>
 
-    <button id="scrollToTopBtn">↑</button>
-    <script src="accueil.js"></script>
-    <script src="action.js"></script>
-    <script src="connexion.js"></script>
     <script>
-        document.getElementById("registrationForm").addEventListener("submit", function (event) {
-            if (!validateForm()) {
-                event.preventDefault(); // Empêche l'envoi du formulaire si la validation échoue
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function filterTable() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchBar");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
             }
-        });
-
-        function validateForm() {
-            var nom = document.getElementById("nom").value;
-            var email = document.getElementById("email").value;
-            var numero = document.getElementById("numero").value;
-            var categories = document.getElementById("categories").value;
-
-            var isValid = true;
-
-            // Validation pour le numéro de téléphone ne dépassant pas 8 chiffres
-            if (numero.length > 8) {
-                document.getElementById("numeroError").innerHTML = "Le numéro ne peut pas dépasser 8 chiffres";
-                isValid = false;
-            } else {
-                document.getElementById("numeroError").innerHTML = "";
-            }
-
-            // Validation de l'e-mail
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                document.getElementById("emailError").innerHTML = "Veuillez entrer une adresse e-mail valide";
-                isValid = false;
-            } else {
-                document.getElementById("emailError").innerHTML = "";
-            }
-
-            // Validation du champ nom
-            if (nom.trim() === "") {
-                document.getElementById("nomError").innerHTML = "Veuillez entrer votre nom";
-                isValid = false;
-            } else {
-                document.getElementById("nomError").innerHTML = "";
-            }
-
-            // Validation du champ categories
-            if (!categories.match(/^(argent|nourriture|habits|fourniture)$/)) {
-                document.getElementById("categoriesError").innerHTML = "Veuillez choisir une catégorie valide";
-                isValid = false;
-            } else {
-                document.getElementById("categoriesError").innerHTML = "";
-            }
-
-            return isValid; // Si toutes les validations réussissent
         }
     </script>
-    <div class="sidebarannonce">
-        <a href="/connexion/connexion.php">Ajouter une Reclammation </a>
-    </div>
 </body>
-
 </html>
+
